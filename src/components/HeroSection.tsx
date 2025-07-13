@@ -47,13 +47,20 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center bounce-in" style={{ animationDelay: '0.3s' }}>
-            <Button className="btn-hero group">
+            <Button 
+              className="btn-hero group"
+              onClick={() => window.location.href = '/search'}
+            >
               <Sparkles className="mr-2 h-5 w-5 group-hover:animate-spin" />
-              Join the Waitlist
+              Find Food Now
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" className="btn-outline">
-              Explore Nearby Cafés 🗺️
+            <Button 
+              variant="outline" 
+              className="btn-outline"
+              onClick={() => window.location.href = '/near-me'}
+            >
+              Explore Nearby 🗺️
             </Button>
           </div>
 
