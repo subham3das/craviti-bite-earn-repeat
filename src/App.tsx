@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +16,8 @@ import CheckoutPage from "./pages/CheckoutPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import ReelUploadPage from "./pages/ReelUploadPage";
 import NotFound from "./pages/NotFound";
+import ProfileEditPage from "./pages/ProfileEditPage";
+import LoyaltyCardPage from "./pages/LoyaltyCardPage";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,8 @@ const App = () => (
           <Route path="/reels" element={<ReelsPage />} />
           <Route path="/reels/upload" element={<ReelUploadPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/edit" element={<ProfileEditPage />} />
+          <Route path="/profile/loyalty" element={<LoyaltyCardPage />} />
           <Route path="/wallet" element={<WalletPage />} />
           <Route path="/restaurant/:id" element={<RestaurantPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />

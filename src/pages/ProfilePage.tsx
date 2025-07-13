@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Edit, MapPin, Star, Trophy, Calendar, Settings, Camera, Heart } from 'lucide-react';
+import { Edit, MapPin, Star, Trophy, Calendar, Settings, Camera, Heart, CreditCard, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -115,20 +115,40 @@ const ProfilePage = () => {
                 </div>
               </div>
               
-              <div className="flex gap-2">
-                <Button 
-                  variant="outline"
-                  onClick={() => window.location.href = '/profile/edit'}
-                >
-                  <Edit size={16} className="mr-2" />
-                  Edit Profile
-                </Button>
-                <Button 
-                  variant="outline"
-                  onClick={() => window.location.href = '/settings'}
-                >
-                  <Settings size={16} />
-                </Button>
+              <div className="flex flex-col gap-2">
+                <div className="flex gap-2">
+                  <Button 
+                    variant="outline"
+                    onClick={() => window.location.href = '/profile/edit'}
+                  >
+                    <Edit size={16} className="mr-2" />
+                    Edit Profile
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    onClick={() => window.location.href = '/settings'}
+                  >
+                    <Settings size={16} />
+                  </Button>
+                </div>
+                <div className="flex gap-2">
+                  <Button 
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => window.location.href = '/profile/loyalty'}
+                  >
+                    <Crown size={16} className="mr-2" />
+                    Loyalty Cards
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => window.location.href = '/wallet'}
+                  >
+                    <CreditCard size={16} className="mr-2" />
+                    Wallet
+                  </Button>
+                </div>
               </div>
             </div>
             
