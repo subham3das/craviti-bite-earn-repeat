@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Wallet, Plus, Gift, ArrowUpRight, ArrowDownLeft, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +8,14 @@ import { Input } from '@/components/ui/input';
 const WalletPage = () => {
   const [cravePoints, setCravePoints] = useState(1250);
   const [topUpAmount, setTopUpAmount] = useState('');
+
+  useEffect(() => {
+    // Load points from localStorage
+    const savedPoints = localStorage.getItem('userPoints');
+    if (savedPoints) {
+      setCravePoints(parseInt(savedPoints));
+    }
+  }, []);
 
   const transactions = [
     {
@@ -111,15 +119,19 @@ const WalletPage = () => {
   ];
 
   const handleTopUp = (amount: number) => {
-    // This would normally integrate with a payment gateway
-    setCravePoints(cravePoints + amount);
+    const newPoints = cravePoints + amount;
+    setCravePoints(newPoints);
+    localStorage.setItem('userPoints', newPoints.toString());
     setTopUpAmount('');
   };
 
   const redeemReward = (reward: any) => {
     if (cravePoints >= reward.points) {
-      setCravePoints(cravePoints - reward.points);
+      const newPoints = cravePoints - reward.points;
+      setCravePoints(newPoints);
+      localStorage.setItem('userPoints', newPoints.toString());
       // Show success message
+      alert(`Successfully redeemed: ${reward.title}!`);
     }
   };
 

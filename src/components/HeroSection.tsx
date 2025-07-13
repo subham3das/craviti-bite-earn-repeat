@@ -1,82 +1,74 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
+
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import heroBackground from '@/assets/hero-background.jpg';
-import LiveCounter from './LiveCounter';
+import { ArrowRight, MapPin } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-10"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
-      <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-      
-      {/* Floating Food Emojis */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 text-4xl float" style={{ animationDelay: '0s' }}>🍕</div>
-        <div className="absolute top-32 right-16 text-3xl float" style={{ animationDelay: '1s' }}>🍔</div>
-        <div className="absolute top-48 left-1/4 text-5xl float" style={{ animationDelay: '2s' }}>☕</div>
-        <div className="absolute bottom-32 right-20 text-4xl float" style={{ animationDelay: '0.5s' }}>🍟</div>
-        <div className="absolute bottom-48 left-16 text-3xl float" style={{ animationDelay: '1.5s' }}>🌮</div>
-        <div className="absolute top-1/3 right-1/3 text-4xl float" style={{ animationDelay: '2.5s' }}>🍩</div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-600 via-purple-700 to-orange-500">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 text-6xl animate-bounce">🍕</div>
+        <div className="absolute top-40 right-20 text-5xl animate-pulse">🍔</div>
+        <div className="absolute bottom-40 left-20 text-4xl animate-bounce delay-1000">☕</div>
+        <div className="absolute bottom-20 right-40 text-5xl animate-pulse delay-500">🌮</div>
+        <div className="absolute top-60 left-1/3 text-3xl animate-bounce delay-700">🍰</div>
+        <div className="absolute top-32 right-1/3 text-4xl animate-pulse delay-300">🥗</div>
       </div>
-
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* Live Counter */}
-          <div className="flex justify-center animate-bounce-in">
-            <LiveCounter />
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-black text-white slide-in-left">
-            Find. Eat. 
-            <span className="text-gradient text-glow block mt-2">
-              Earn. Repeat.
+      
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+        <div className="space-y-8">
+          {/* Main headline with better contrast */}
+          <h1 className="text-5xl md:text-7xl font-bold text-white drop-shadow-2xl">
+            Find. Eat. Earn.{' '}
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              Repeat.
             </span>
           </h1>
-
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto slide-in-right font-medium">
-            Craviti helps you discover cool cafés and earn 
-            <span className="text-accent font-bold"> real rewards </span>
-            on every bite. 🔥
+          
+          {/* Subheadline with improved readability */}
+          <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto font-medium drop-shadow-lg">
+            Craviti helps you discover cool cafés and earn rewards on every bite. 
+            <span className="block mt-2 text-yellow-300">No fake discounts, just real rewards! 🎉</span>
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center bounce-in" style={{ animationDelay: '0.3s' }}>
+          
+          {/* CTA buttons with better visibility */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             <Button 
-              className="btn-hero group"
+              size="lg" 
+              className="bg-white text-primary hover:bg-white/90 font-bold text-lg px-8 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all"
               onClick={() => window.location.href = '/search'}
             >
-              <Sparkles className="mr-2 h-5 w-5 group-hover:animate-spin" />
-              Find Food Now
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <MapPin className="mr-2" size={20} />
+              Find Nearby Cafés
             </Button>
             <Button 
+              size="lg" 
               variant="outline" 
-              className="btn-outline"
-              onClick={() => window.location.href = '/near-me'}
+              className="border-2 border-white text-white hover:bg-white hover:text-primary font-bold text-lg px-8 py-4 rounded-full shadow-2xl backdrop-blur-sm bg-white/10 transform hover:scale-105 transition-all"
+              onClick={() => window.location.href = '/tasks'}
             >
-              Explore Nearby 🗺️
+              Start Earning Points
+              <ArrowRight className="ml-2" size={20} />
             </Button>
           </div>
-
-          {/* Fun Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 slide-in-left" style={{ animationDelay: '0.6s' }}>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white">500+</div>
-              <div className="text-white/80">Happy Students</div>
+          
+          {/* Live stats with better contrast */}
+          <div className="flex flex-wrap justify-center gap-8 pt-12">
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/20">
+              <div className="text-3xl font-bold text-white">2,500+</div>
+              <div className="text-white/90 font-medium">Students Joined</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white">50+</div>
-              <div className="text-white/80">Partner Cafés</div>
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/20">
+              <div className="text-3xl font-bold text-yellow-300">₹45,000</div>
+              <div className="text-white/90 font-medium">Rewards Earned</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white">₹25K+</div>
-              <div className="text-white/80">Cashback Given</div>
+            <div className="bg-white/20 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/20">
+              <div className="text-3xl font-bold text-orange-300">150+</div>
+              <div className="text-white/90 font-medium">Partner Cafés</div>
             </div>
           </div>
         </div>

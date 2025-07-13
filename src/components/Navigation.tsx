@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Wallet, Search, Home, User, MapPin, Trophy, Video, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,7 +6,23 @@ import { Button } from '@/components/ui/button';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const [cravePoints] = useState(1250); // This would come from a state management system
+  const [cravePoints, setCravePoints] = useState(1250);
+
+  useEffect(() => {
+    // Load points from localStorage and listen for changes
+    const updatePoints = () => {
+      const savedPoints = localStorage.getItem('userPoints');
+      if (savedPoints) {
+        setCravePoints(parseInt(savedPoints));
+      }
+    };
+    
+    updatePoints();
+    
+    // Update points every second to catch changes
+    const interval = setInterval(updatePoints, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
